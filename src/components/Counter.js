@@ -1,13 +1,18 @@
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Increment } from "../actions/action";
 
-const Counter = () => {
+const Counter = (props) => {
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(Increment(props.count));
+  }, []);
   return (
     <div>
       <button
         onClick={() => {
-          dispatch(Increment());
+          dispatch(Increment(props.count));
         }}
       >
         +
